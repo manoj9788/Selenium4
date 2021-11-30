@@ -26,6 +26,12 @@ public class BrowserOptionsTest {
     @BeforeEach
     public void setUpDriverInstance() {
         driver = new ChromeDriver();
+         /*
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setCapability("platformName", "Mac");
+        chromeOptions.setCapability("browserVersion", "96");
+        WebDriver driver = new RemoteWebDriver(new URL("grid url"), chromeOptions);
+         */
     }
 
     @Test
