@@ -19,7 +19,6 @@ public class BrowserOptionsTest {
 
     WebDriver driver;
 
-
     @BeforeAll
     public static void setUpWebDriverManager() {
         WebDriverManager.chromedriver().setup();
