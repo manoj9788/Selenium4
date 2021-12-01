@@ -2,7 +2,6 @@ package webDriverBiDi;
 
 import com.google.common.net.MediaType;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -10,13 +9,12 @@ import org.openqa.selenium.HasAuthentication;
 import org.openqa.selenium.UsernameAndPassword;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.HasDevTools;
 import org.openqa.selenium.devtools.NetworkInterceptor;
 import org.openqa.selenium.remote.http.Contents;
 import org.openqa.selenium.remote.http.HttpResponse;
 import org.openqa.selenium.remote.http.Route;
 import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -24,10 +22,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 
+import static org.openqa.selenium.remote.http.Contents.utf8String;
+
 public class CDPTest {
 
     private ChromeDriver driver;
-    private DevTools devTools;
     private Wait<WebDriver> wait;
 
    // @BeforeAll
@@ -38,8 +37,10 @@ public class CDPTest {
     @BeforeEach
     public void setUpDriverInstance() {
         driver = new ChromeDriver();
-        devTools = driver.getDevTools();
-        devTools.createSession();
+        ((HasDevTools) driver).getDevTools().createSession();
+
+       // devTools = driver.getDevTools();
+      //  devTools.createSession();
     }
 
     @Test
