@@ -38,7 +38,6 @@ public class CDPTest {
     public void setUpDriverInstance() {
         driver = new ChromeDriver();
         ((HasDevTools) driver).getDevTools().createSession();
-
        // devTools = driver.getDevTools();
       //  devTools.createSession();
     }

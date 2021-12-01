@@ -10,8 +10,12 @@ import org.openqa.selenium.Credentials;
 import org.openqa.selenium.HasAuthentication;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -22,20 +26,20 @@ public class BrowserOptionsTest {
     @BeforeAll
     public static void setUpWebDriverManager() {
         WebDriverManager.chromedriver().setup();
+
     }
     @BeforeEach
-    public void setUpDriverInstance() {
-        driver = new ChromeDriver();
-         /*
+    public void setUpDriverInstance() throws MalformedURLException {
+       // driver = new ChromeDriver();
+
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setCapability("platformName", "Mac");
-        chromeOptions.setCapability("browserVersion", "96");
-        WebDriver driver = new RemoteWebDriver(new URL("grid url"), chromeOptions);
-         */
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions);
+
     }
 
     @Test
     public void browserOptionsTest() {
+
         driver.get("https://applitools.com");
     }
 
